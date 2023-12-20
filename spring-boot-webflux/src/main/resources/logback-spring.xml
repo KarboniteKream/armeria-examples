@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+  <appender name="ARMERIA" class="com.linecorp.armeria.common.logback.RequestContextExportingAppender">
+    <export>remote.ip</export>
+    <export>req.headers.user-agent</export>
+    <!-- Comment out this line, and you'll see way more logs from com.linecorp.armeria.common.Flags. -->
+    <export>req.headers.fake-header</export>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="ARMERIA" />
+  </root>
+</configuration>
