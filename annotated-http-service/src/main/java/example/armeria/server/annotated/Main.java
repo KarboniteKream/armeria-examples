@@ -40,6 +40,7 @@ public class Main {
           .annotatedService("/file", new FileUploadService())
           .annotatedService("/messageConverter", new MessageConverterService())
           .annotatedService("/exception", new ExceptionHandlerService())
+          .annotatedService("/rxjava", new RxJavaService())
           .serviceUnder("/docs",
                         DocService.builder()
                                   .examplePaths(PathPatternService.class,
